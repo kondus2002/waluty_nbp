@@ -60,7 +60,7 @@ class CurrencyConverter {
             $pdo = new PDO("mysql:host=$this->dbHost;dbname=$this->dbName", $this->dbUser, $this->dbPass);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $stmt = $pdo->query("SELECT source_currency, source_currency_amount, target_currency, target_currency_amount FROM convertions LIMIT 5");
+            $stmt = $pdo->query("SELECT source_currency, source_currency_amount, target_currency, target_currency_amount FROM convertions ORDER BY id DESC LIMIT 5");
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
